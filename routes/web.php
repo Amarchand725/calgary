@@ -30,6 +30,7 @@ Route::get('contact', 'WebController@contact')->name('contact');
 Route::get('services', 'WebController@services')->name('services');
 Route::get('prices', 'WebController@prices')->name('prices');
 Route::get('care-points', 'WebController@carePoints')->name('care-points');
+Route::post('subscriber/store', 'WebController@subscriberStore')->name('subscriber.store');
 
 //Admin login
 Route::get('admin/login', 'Admin\AdminController@login')->name('admin.login');
@@ -60,23 +61,26 @@ Route::resource('permission', 'Admin\PermissionController');
 Route::resource('setting', 'Admin\SettingController');
 
 //sliders
-Route::resource('slider', 'admin\SliderController');
+Route::resource('slider', 'Admin\SliderController');
 
 //testimonial
-Route::resource('testimonial', 'admin\TestimonialController');
+Route::resource('testimonial', 'Admin\TestimonialController');
 
 //service
-Route::resource('service', 'admin\ServiceController');
+Route::resource('service', 'Admin\ServiceController');
 
 //pages settings
-Route::resource('page', 'admin\PageController');
-Route::resource('page_setting', 'admin\PageSettingController');
+Route::resource('page', 'Admin\PageController');
+Route::resource('page_setting', 'Admin\PageSettingController');
 
 //package
-Route::resource('package', 'admin\PackageController');
+Route::resource('package', 'Admin\PackageController');
 
 //team
-Route::resource('team', 'admin\TeamController');
+Route::resource('team', 'Admin\TeamController');
 
 //Coupons
-Route::resource('coupon', 'admin\CouponController');
+Route::resource('coupon', 'Admin\CouponController');
+
+//service bookings
+Route::resource('booking', 'BookingController');

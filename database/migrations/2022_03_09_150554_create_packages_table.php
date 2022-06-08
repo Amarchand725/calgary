@@ -16,6 +16,7 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('created_by');
+            $table->boolean('is_featured')->default(0);
             $table->string('name');
             $table->string('slug');
             $table->string('price')->nullable();

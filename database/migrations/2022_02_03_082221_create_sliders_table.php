@@ -16,15 +16,10 @@ class CreateSlidersTable extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("created_by");
-            $table->string("left_sec_title")->nullable();
-            $table->string("left_sec_sub_description")->nullable();
-            $table->text("left_sec_description")->nullable();
-            $table->string("left_sec_image")->nullable();
-            $table->string("right_sect_title")->nullable();
-            $table->string("right_sec_description")->nullable();
-            $table->string("right_sec_left_btn_lbl")->nullable();
-            $table->string("right_sec_right_btn_lbl")->nullable();
-            $table->string("right_sec_video_link")->nullable();
+            $table->bigInteger("service_id");
+            $table->string("title");
+            $table->text("description");
+            $table->string("image");
             $table->boolean("status")->default(1);
             $table->string('deleted_at')->nullable();
             $table->timestamps();

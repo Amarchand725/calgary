@@ -41,204 +41,12 @@
 							</div>
 						</div>
 						
-						<fieldset>
-							<legend>Left Section</legend>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Left Top Heading </label>
-								<div class="col-sm-6">
-									<input type="text" name="home_left_heading" class="form-control" value="{{ isset($page_data['home_left_heading'])?$page_data['home_left_heading']:'' }}" placeholder="Enter banner heading">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Left Top Description </label>
-								<div class="col-sm-6">
-									<textarea name="home_left_description" class="form-control" id="" cols="30" rows="5" placeholder="Enter left top description">{{ isset($page_data['home_left_description'])?$page_data['home_left_description']:'' }}</textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Left Bottom Label </label>
-								<div class="col-sm-6">
-									<textarea name="home_left_bottom_label" class="form-control" id="" cols="30" rows="2" placeholder="Enter left bottom label">{{ isset($page_data['home_left_bottom_label'])?$page_data['home_left_bottom_label']:'' }}</textarea>
-								</div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<legend>Right Section</legend>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Right Top Title </label>
-								<div class="col-sm-6">
-									<input type="text" name="home_right_title" class="form-control" value="{{ isset($page_data['home_right_title'])?$page_data['home_right_title']:'' }}" placeholder="Enter banner heading">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Right Sub Title </label>
-								<div class="col-sm-6">
-									<input type="text" name="home_right_sub_title" class="form-control" value="{{ isset($page_data['home_right_sub_title'])?$page_data['home_right_sub_title']:'' }}" placeholder="Enter banner heading">
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label for="home_right_video" class="col-sm-2 control-label">Video URL  </label>
-								<div class="col-sm-6">
-									<input type="text" id="home_right_video" name="home_right_video" class="form-control" value="{{ isset($page_data['home_right_video'])?$page_data['home_right_video']:'' }}" placeholder="https://www.youtube.com/watch?v=jDDaplaOz7Q">
-								</div>
-							</div>
-						</fieldset>
-						
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Show on Home? </label>
 							<div class="col-sm-2">
 								<select name="home_section" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
 									<option value="1" {{ (isset($page_data['home_section'])?($page_data['home_section']==1?'selected':''):'') }}>Show</option>
 									<option value="0" {{ (isset($page_data['home_section'])?($page_data['home_section']==0?'selected':''):'') }}>Hide</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label"></label>
-							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form_home_blog">Submit</button>
-							</div>
-						</div>
-					</form>
-
-					<h3 class="sec_title">Banner Section</h3>
-					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-						@csrf
-						<input type="hidden" name="parent_slug" id="" value="{{ $model->slug }}">
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Banner Heading </label>
-							<div class="col-sm-6">
-								<input type="text" name="banner_heading" class="form-control" value="{{ isset($page_data['banner_heading'])?$page_data['banner_heading']:'' }}" placeholder="Enter banner heading">
-							</div>
-						</div>
-						@if(isset($page_data['banner_bg_image']))
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Existing Image</label>
-								<div class="col-sm-6" style="padding-top:6px;">
-									<img src="{{ asset('/public/admin/assets/images/page/'.$page_data['banner_bg_image']) }}" class="existing-photo" style="height:180px;">
-								</div>
-							</div>
-						@endif
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Background Image </label>
-							<div class="col-sm-6">
-								<input type="file" name="banner_bg_image" class="form-control">
-							</div>
-						</div>
-						
-						<fieldset>
-							<legend>Top Section</legend>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Heading  </label>
-								<div class="col-sm-6">
-									<input type="text" name="top_sec_heading" class="form-control" value="{{ isset($page_data['top_sec_heading'])?$page_data['top_sec_heading']:'' }}" placeholder="e.g Condidate">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Title  </label>
-								<div class="col-sm-6">
-									<input type="text" name="top_sec_title" class="form-control" value="{{ isset($page_data['top_sec_title'])?$page_data['top_sec_title']:'' }}" placeholder="Enter title">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Description  </label>
-								<div class="col-sm-6">
-									<textarea name="top_sec_description" id="" class="form-control" placeholder="Enter description here...">{{ isset($page_data['top_sec_description'])?$page_data['top_sec_description']:'' }}</textarea>
-								</div>
-							</div>
-							@if(isset($page_data['top_sec_image']))
-								<div class="form-group">
-									<label for="" class="col-sm-2 control-label">Existing Image</label>
-									<div class="col-sm-6" style="padding-top:6px;">
-										<img src="{{ asset('/public/admin/assets/images/page/'.$page_data['top_sec_image']) }}" class="existing-photo" style="height:180px;">
-									</div>
-								</div>
-							@endif
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Image  </label>
-								<div class="col-sm-6">
-									<input type="file" name="top_sec_image" class="form-control" value="{{ isset($page_data['home_why_choose_title'])?$page_data['home_why_choose_title']:'' }}">
-								</div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<legend>Middle Section</legend>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Heading  </label>
-								<div class="col-sm-6">
-									<input type="text" name="middle_sec_heading" class="form-control" value="{{ isset($page_data['middle_sec_heading'])?$page_data['middle_sec_heading']:'' }}" placeholder="e.g Interviewer">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Title  </label>
-								<div class="col-sm-6">
-									<input type="text" name="middle_sec_title" class="form-control" value="{{ isset($page_data['middle_sec_title'])?$page_data['middle_sec_title']:'' }}" placeholder="Enter title">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Description  </label>
-								<div class="col-sm-6">
-									<textarea name="middle_sec_description" id="" class="form-control" placeholder="Enter description here...">{{ isset($page_data['middle_sec_description'])?$page_data['middle_sec_description']:'' }}</textarea>
-								</div>
-							</div>
-							@if(isset($page_data['middle_sec_image']))
-								<div class="form-group">
-									<label for="" class="col-sm-2 control-label">Existing Image</label>
-									<div class="col-sm-6" style="padding-top:6px;">
-										<img src="{{ asset('/public/admin/assets/images/page/'.$page_data['middle_sec_image']) }}" class="existing-photo" style="height:180px;">
-									</div>
-								</div>
-							@endif
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Image  </label>
-								<div class="col-sm-6">
-									<input type="file" name="middle_sec_image" class="form-control" value="{{ isset($page_data['home_why_choose_title'])?$page_data['home_why_choose_title']:'' }}">
-								</div>
-							</div>
-						</fieldset>
-						<fieldset>
-							<legend>Bottom Section</legend>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Heading  </label>
-								<div class="col-sm-6">
-									<input type="text" name="bottom_sec_heading" class="form-control" value="{{ isset($page_data['bottom_sec_heading'])?$page_data['bottom_sec_heading']:'' }}" placeholder="e.g Connect">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Title  </label>
-								<div class="col-sm-6">
-									<input type="text" name="bottom_sec_title" class="form-control" value="{{ isset($page_data['bottom_sec_title'])?$page_data['bottom_sec_title']:'' }}" placeholder="Enter title">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Description  </label>
-								<div class="col-sm-6">
-									<textarea name="bottom_sec_description" id="" class="form-control" placeholder="Enter description here...">{{ isset($page_data['bottom_sec_description'])?$page_data['bottom_sec_description']:'' }}</textarea>
-								</div>
-							</div>
-							@if(isset($page_data['bottom_sec_image']))
-								<div class="form-group">
-									<label for="" class="col-sm-2 control-label">Existing Image</label>
-									<div class="col-sm-6" style="padding-top:6px;">
-										<img src="{{ asset('/public/admin/assets/images/page/'.$page_data['bottom_sec_image']) }}" class="existing-photo" style="height:180px;">
-									</div>
-								</div>
-							@endif
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Image  </label>
-								<div class="col-sm-6">
-									<input type="file" name="bottom_sec_image" class="form-control" value="{{ isset($page_data['home_why_choose_title'])?$page_data['home_why_choose_title']:'' }}">
-								</div>
-							</div>
-						</fieldset>
-						
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Show on Home? </label>
-							<div class="col-sm-2">
-								<select name="home_banner_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
-									<option value="1" {{ (isset($page_data['home_banner_status'])?($page_data['home_banner_status']==1?'selected':''):'') }}>Show</option>
-									<option value="0" {{ (isset($page_data['home_banner_status'])?($page_data['home_banner_status']==0?'selected':''):'') }}>Hide</option>
 								</select>
 							</div>
 						</div>
@@ -316,108 +124,6 @@
 						</div>
 					</form>
 
-					<h3 class="sec_title">Mock Advantage Section</h3>
-					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-						@csrf
-						<input type="hidden" name="parent_slug" id="" value="{{ $model->slug }}">
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_title" class="form-control" value="{{ isset($page_data['home_mock_advantage_title'])?$page_data['home_mock_advantage_title']:'' }}" placeholder="Enter title">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">SubTitle </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_subtitle" class="form-control" value="{{ isset($page_data['home_mock_advantage_subtitle'])?$page_data['home_mock_advantage_subtitle']:'' }}" placeholder="Enter sub title">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Show on Home? </label>
-							<div class="col-sm-2">
-								<select name="home_mock_advantage_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
-									<option value="1" {{ (isset($page_data['home_mock_advantage_status'])?($page_data['home_mock_advantage_status']==1?'selected':''):'') }}>Show</option>
-									<option value="0" {{ (isset($page_data['home_mock_advantage_status'])?($page_data['home_mock_advantage_status']==0?'selected':''):'') }}>Hide</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label"></label>
-							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form_home_blog">Submit</button>
-							</div>
-						</div>
-					</form>
-
-					<h3 class="sec_title">Mock Advantage Bottom Counter Section</h3>
-					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-						@csrf
-						<input type="hidden" name="parent_slug" id="" value="{{ $model->slug }}">
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">First Label </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_first_label" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_first_label'])?$page_data['home_mock_advantage_bottom_first_label']:'' }}" placeholder="Enter Label">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">First Counter </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_first_counter" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_first_counter'])?$page_data['home_mock_advantage_bottom_first_counter']:'' }}" placeholder="Enter Counter">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Second Label </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_second_label" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_second_label'])?$page_data['home_mock_advantage_bottom_second_label']:'' }}" placeholder="Enter Label">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Second Counter </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_second_counter" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_second_counter'])?$page_data['home_mock_advantage_bottom_second_counter']:'' }}" placeholder="Enter counter">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Third Label </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_third_label" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_third_label'])?$page_data['home_mock_advantage_bottom_third_label']:'' }}" placeholder="Enter Label">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Third Counter </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_third_counter" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_third_counter'])?$page_data['home_mock_advantage_bottom_third_counter']:'' }}" placeholder="Enter Counter">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Fourth Label </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_fourth_label" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_fourth_label'])?$page_data['home_mock_advantage_bottom_fourth_label']:'' }}" placeholder="Enter Label">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Fourth Counter </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_mock_advantage_bottom_fourth_counter" class="form-control" value="{{ isset($page_data['home_mock_advantage_bottom_fourth_counter'])?$page_data['home_mock_advantage_bottom_fourth_counter']:'' }}" placeholder="Enter Counter">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Show on Home? </label>
-							<div class="col-sm-2">
-								<select name="home_mock_advantage_counter_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
-									<option value="1" {{ (isset($page_data['home_mock_advantage_counter_status'])?($page_data['home_mock_advantage_counter_status']==1?'selected':''):'') }}>Show</option>
-									<option value="0" {{ (isset($page_data['home_mock_advantage_counter_status'])?($page_data['home_mock_advantage_counter_status']==0?'selected':''):'') }}>Hide</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label"></label>
-							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form_home_blog">Submit</button>
-							</div>
-						</div>
-					</form>
-
 					<h3 class="sec_title">Sign Up Section</h3>
 					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 						@csrf
@@ -435,83 +141,11 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Button Label </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_signup_btn_label" class="form-control" value="{{ isset($page_data['home_signup_btn_label'])?$page_data['home_signup_btn_label']:'' }}" placeholder="Enter sign up button label">
-							</div>
-						</div>
-						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Show on Home? </label>
 							<div class="col-sm-2">
 								<select name="home_signup_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
 									<option value="1" {{ (isset($page_data['home_signup_status'])?($page_data['home_signup_status']==1?'selected':''):'') }}>Show</option>
 									<option value="0" {{ (isset($page_data['home_signup_status'])?($page_data['home_signup_status']==0?'selected':''):'') }}>Hide</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label"></label>
-							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form_home_blog">Submit</button>
-							</div>
-						</div>
-					</form>
-
-					<h3 class="sec_title">Real People Section</h3>
-					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-						@csrf
-						<input type="hidden" name="parent_slug" id="" value="{{ $model->slug }}">
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_real_title" class="form-control" value="{{ isset($page_data['home_real_title'])?$page_data['home_real_title']:'' }}" placeholder="Enter title">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Description </label>
-							<div class="col-sm-6">
-								<textarea name="home_real_description" id="" class="form-control" placeholder="Enter description">{{ isset($page_data['home_real_description'])?$page_data['home_real_description']:'' }}</textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Show on Home? </label>
-							<div class="col-sm-2">
-								<select name="home_real_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
-									<option value="1" {{ (isset($page_data['home_real_status'])?($page_data['home_real_status']==1?'selected':''):'') }}>Show</option>
-									<option value="0" {{ (isset($page_data['home_real_status'])?($page_data['home_real_status']==0?'selected':''):'') }}>Hide</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label"></label>
-							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form_home_blog">Submit</button>
-							</div>
-						</div>
-					</form>
-
-					<h3 class="sec_title">How Does Work Section</h3>
-					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-						@csrf
-						<input type="hidden" name="parent_slug" id="" value="{{ $model->slug }}">
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title </label>
-							<div class="col-sm-6">
-								<input type="text" name="home_how_title" class="form-control" value="{{ isset($page_data['home_how_title'])?$page_data['home_how_title']:'' }}" placeholder="Enter title">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Description </label>
-							<div class="col-sm-6">
-								<textarea name="home_how_description" id="" class="form-control" placeholder="Enter description">{{ isset($page_data['home_how_description'])?$page_data['home_how_description']:'' }}</textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Show on Home? </label>
-							<div class="col-sm-2">
-								<select name="home_how_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
-									<option value="1" {{ (isset($page_data['home_how_status'])?($page_data['home_how_status']==1?'selected':''):'') }}>Show</option>
-									<option value="0" {{ (isset($page_data['home_how_status'])?($page_data['home_how_status']==0?'selected':''):'') }}>Hide</option>
 								</select>
 							</div>
 						</div>
@@ -589,61 +223,68 @@
 						</div>
 					</form>
 
-					<h3 class="sec_title">Help Section</h3>
+					<h3 class="sec_title">Counter Section</h3>
 					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 						@csrf
 						<input type="hidden" name="parent_slug" id="" value="{{ $model->slug }}">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title </label>
+							<label for="" class="col-sm-2 control-label">Points </label>
 							<div class="col-sm-6">
-								<input type="text" name="home_help_title" class="form-control" value="{{ isset($page_data['home_help_title'])?$page_data['home_help_title']:'' }}" placeholder="Enter title">
+								<input type="text" name="home_counter_points_label" class="form-control" value="{{ isset($page_data['home_counter_points_label'])?$page_data['home_counter_points_label']:'' }}" placeholder="Enter points label">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Description </label>
+							<label for="" class="col-sm-2 control-label">Points Counter </label>
 							<div class="col-sm-6">
-								<textarea name="home_help_description" id="" class="form-control" placeholder="Enter description">{{ isset($page_data['home_help_description'])?$page_data['home_help_description']:'' }}</textarea>
+								<input type="number" name="home_counter_points_counter" class="form-control" value="{{ isset($page_data['home_counter_points_counter'])?$page_data['home_counter_points_counter']:'' }}" placeholder="Enter points counter">
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Show on Home? </label>
-							<div class="col-sm-2">
-								<select name="home_help_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
-									<option value="1" {{ (isset($page_data['home_help_status'])?($page_data['home_help_status']==1?'selected':''):'') }}>Show</option>
-									<option value="0" {{ (isset($page_data['home_help_status'])?($page_data['home_help_status']==0?'selected':''):'') }}>Hide</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label"></label>
-							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form_home_blog">Submit</button>
-							</div>
-						</div>
-					</form>
 
-					<h3 class="sec_title">Tips Section</h3>
-					<form action="{{ route('page_setting.store') }}" class="form-horizontal" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-						@csrf
-						<input type="hidden" name="parent_slug" id="" value="{{ $model->slug }}">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title </label>
+							<label for="" class="col-sm-2 control-label">Members </label>
 							<div class="col-sm-6">
-								<input type="text" name="home_tips_title" class="form-control" value="{{ isset($page_data['home_tips_title'])?$page_data['home_tips_title']:'' }}" placeholder="Enter title">
+								<input type="text" name="home_counter_members_label" class="form-control" value="{{ isset($page_data['home_counter_members_label'])?$page_data['home_counter_members_label']:'' }}" placeholder="Enter members label">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Description </label>
+							<label for="" class="col-sm-2 control-label">Members Counter </label>
 							<div class="col-sm-6">
-								<textarea name="home_tips_description" id="" class="form-control" placeholder="Enter description">{{ isset($page_data['home_tips_description'])?$page_data['home_tips_description']:'' }}</textarea>
+								<input type="number" name="home_counter_members_counter" class="form-control" value="{{ isset($page_data['home_counter_members_counter'])?$page_data['home_counter_members_counter']:'' }}" placeholder="Enter points counter">
 							</div>
 						</div>
+
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Clients </label>
+							<div class="col-sm-6">
+								<input type="text" name="home_counter_clients_label" class="form-control" value="{{ isset($page_data['home_counter_clients_label'])?$page_data['home_counter_clients_label']:'' }}" placeholder="Enter clients label">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Clients Counter </label>
+							<div class="col-sm-6">
+								<input type="number" name="home_counter_clients_counter" class="form-control" value="{{ isset($page_data['home_counter_clients_counter'])?$page_data['home_counter_clients_counter']:'' }}" placeholder="Enter happy clients counter">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Projects </label>
+							<div class="col-sm-6">
+								<input type="text" name="home_counter_projects_label" class="form-control" value="{{ isset($page_data['home_counter_projects_label'])?$page_data['home_counter_projects_label']:'' }}" placeholder="Enter complete projects label">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Completed Projects Counter </label>
+							<div class="col-sm-6">
+								<input type="number" name="home_counter_projects_counter" class="form-control" value="{{ isset($page_data['home_counter_projects_counter'])?$page_data['home_counter_projects_counter']:'' }}" placeholder="Enter complete projects counter">
+							</div>
+						</div>
+
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Show on Home? </label>
 							<div class="col-sm-2">
-								<select name="home_tips_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
-									<option value="1" {{ (isset($page_data['home_tips_status'])?($page_data['home_tips_status']==1?'selected':''):'') }}>Show</option>
-									<option value="0" {{ (isset($page_data['home_tips_status'])?($page_data['home_tips_status']==0?'selected':''):'') }}>Hide</option>
+								<select name="home_team_status" class="form-control select2 select2-accessible" style="width:auto;" tabindex="-1" aria-hidden="true">
+									<option value="1" {{ (isset($page_data['home_team_status'])?($page_data['home_team_status']==1?'selected':''):'') }}>Show</option>
+									<option value="0" {{ (isset($page_data['home_team_status'])?($page_data['home_team_status']==0?'selected':''):'') }}>Hide</option>
 								</select>
 							</div>
 						</div>

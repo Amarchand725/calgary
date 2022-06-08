@@ -62,7 +62,7 @@ a:focus {
 }
 
 .container-fluid {
-    max-width: 1366px;
+    max-width: 100%;
 }
 
 [class^="flaticon-"]:before,
@@ -71,6 +71,13 @@ a:focus {
 [class*=" flaticon-"]:after {
     font-size: inherit;
     margin-left: 0;
+}
+
+
+.about-content ul li::before {
+    content: "\f058";
+    margin-right: 8px;
+    color: #e81c2e;
 }
 
 

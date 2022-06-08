@@ -25,39 +25,29 @@
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Meta Title </label>
-							<div class="col-sm-9">
-								<input type="text" name="mt_about" class="form-control" value="{{ isset($page_data['mt_about'])?$page_data['mt_about']:'' }}" placeholder="Enter meta title">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Meta Keyword </label>
-							<div class="col-sm-9">
-								<textarea class="form-control" name="mk_about" style="height:60px;" placeholder="Enter meta keyword">{{ isset($page_data['mk_about'])?$page_data['mk_about']:'' }}</textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Meta Description </label>
-							<div class="col-sm-9">
-								<textarea class="form-control" name="md_about" style="height:60px;" placeholder="Enter meta description">{{ isset($page_data['md_about'])?$page_data['md_about']:'' }}</textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Heading </label>
+							<label for="" class="col-sm-2 control-label">Title </label>
 							<div class="col-sm-9">
 								<input type="text" name="about_heading" class="form-control" value="{!! isset($page_data['about_heading'])?$page_data['about_heading']:'' !!}" placeholder="Enter heading">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Left About Content </label>
+							<label for="" class="col-sm-2 control-label">About Content </label>
 							<div class="col-sm-9">
-								<textarea name="about_left_content" class="form-control texteditor" cols="30" rows="10" placeholder="Enter left content">{!! isset($page_data['about_left_content'])?$page_data['about_left_content']:'' !!}</textarea>
+								<textarea name="about_content" class="form-control texteditor" cols="30" rows="10" placeholder="Enter left content">{!! isset($page_data['about_content'])?$page_data['about_content']:'' !!}</textarea>
 							</div>
 						</div>
+						@if(isset($page_data['about_side_image']))
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">Existing Image</label>
+								<div class="col-sm-6" style="padding-top:6px;">
+									<img src="{{ asset('/public/admin/assets/images/page/'.$page_data['about_side_image']) }}" class="existing-photo" style="height:180px;">
+								</div>
+							</div>
+						@endif
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Right About Content </label>
+							<label for="" class="col-sm-2 control-label">Side Image </label>
 							<div class="col-sm-9">
-								<textarea name="right_left_content" class="form-control texteditor" cols="30" rows="10" placeholder="Enter right content">{!! isset($page_data['right_left_content'])?$page_data['right_left_content']:'' !!}</textarea>
+								<input type="file" name="about_side_image" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">

@@ -17,4 +17,9 @@ class Slider extends Model
     {
         return $this->hasOne(User::class, 'id', 'created_by');
     }
+
+    public function hasService()
+    {
+        return $this->hasOne(Service::class, 'id', 'service_id');
+    }
 }

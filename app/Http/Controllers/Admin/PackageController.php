@@ -69,6 +69,7 @@ class PackageController extends Controller
 
         $model = new Package();
         $model->created_by = Auth::user()->id;
+        $model->is_featured = $request->is_featured;
         $model->name = $request->name;
         $model->price = !empty($request->price)?$request->price:0;
         $model->slug = \Str::slug($request->name);
@@ -111,12 +112,13 @@ class PackageController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        $validator = $request->validate([
+        /* $validator = $request->validate([
             'name' => 'required|max:255',
             'description' => 'required|255',
-        ]);
+        ]); */
 
         $update = Package::where('slug', $slug)->first();
+        $update->is_featured = $request->is_featured;
         $update->name = $request->name;
         $update->price = $request->price;
         $update->slug = \Str::slug($request->name);

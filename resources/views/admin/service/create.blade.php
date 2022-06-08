@@ -18,9 +18,9 @@
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Name <span style='color:red'>*</span></label>
+							<label for="" class="col-sm-2 control-label">Title <span style='color:red'>*</span></label>
 							<div class="col-sm-9">
-								<input type="text" autocomplete="off" class="form-control" name="name" value="" placeholder="Enter service name">
+								<input type="text" autocomplete="off" class="form-control" name="name" value="" placeholder="Enter service title">
 								<span style="color: red">{{ $errors->first('name') }}</span>
 							</div>
 						</div>
@@ -32,9 +32,16 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Image <span style='color:red'>*</span></label>
+							<div class="col-sm-9">
+								<input type="file" autocomplete="off" class="form-control" name="image">
+								<span style="color: red">{{ $errors->first('image') }}</span>
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left">Submit</button>
+								<button type="submit" class="btn btn-success pull-left">Save</button>
 							</div>
 						</div>
 					</div>

@@ -20,6 +20,7 @@ class CreateServicesTable extends Migration
             $table->string("slug")->nullable();
             $table->longText("description")->nullable();
             $table->boolean('status')->default(1);
+            $table->string('image')->nullable();
             $table->string('deleted_at')->nullable();
             $table->timestamps();
         });

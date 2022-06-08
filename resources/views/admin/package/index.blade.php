@@ -6,7 +6,7 @@
 	<div class="content-header-left">
 		<h1>{{ $page_title }}</h1>
 	</div>
-	@can('advantage-create')
+	@can('package-create')
 	<div class="content-header-right">
 		<a href="{{ route('package.create') }}" class="btn btn-primary btn-sm">Add Package</a>
 	</div>
@@ -54,7 +54,7 @@
 								<tr id="id-{{ $model->slug }}">
 									<td>{{ $models->firstItem()+$key }}.</td>
 									<td>{!! \Illuminate\Support\Str::limit($model->name,40) !!}</td>
-									<td>€{{ $model->price }}</td>
+									<td>{!! $home_page_data['header_currency_symbol'] !!}{{ number_format($model->price, 2) }}</td>
 									<td>{!! \Illuminate\Support\Str::limit($model->description, 70) !!}</td>
 									<td>{{isset($model->hasCreatedBy)?$model->hasCreatedBy->name:'N/A'}}</td>
 									<td>

@@ -63,9 +63,17 @@ class ServiceController extends Controller
     {
         $validator = $request->validate([
             'name' => 'required|max:255',
+            'image' => 'required',
         ]);
 
         $service = new Service();
+
+        if (isset($request->image)) {
+            $image = date('d-m-Y-His').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->image->move(public_path('/admin/images/services'), $image);
+            $service->image = $image;
+        }
+
         $service->created_by = Auth::user()->id;
         $service->name = $request->name;
         $service->slug = \Str::slug($request->name);
@@ -115,6 +123,11 @@ class ServiceController extends Controller
         ]);
 
         $service = Service::where('slug', $slug)->first();
+        if (isset($request->image)) {
+            $image = date('d-m-Y-His').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->image->move(public_path('/admin/images/services'), $image);
+            $service->image = $image;
+        }
         $service->name = $request->name;
         $service->slug = \Str::slug($request->name);
         $service->description = $request->description;

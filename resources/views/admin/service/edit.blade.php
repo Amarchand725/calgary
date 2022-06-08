@@ -27,8 +27,23 @@
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Description </label>
 							<div class="col-sm-9">
-								<textarea class="form-control texteditor" name="description" style="height:140px;" placeholder="Enter description">{!! $service->description !!}</textarea>
+								<textarea class="form-control texteditor" name="description" style="height:140px;" placeholder="Enter description">{{ $service->description }}</textarea>
 								<span style="color: red">{{ $errors->first('description') }}</span>
+							</div>
+						</div>
+						@if($service->image)
+							<div class="form-group">
+								<label for="" class="col-sm-2 control-label">Exist Image </label>
+								<div class="col-sm-9" style="padding-top:5px">
+									<img src="{{ asset('public/admin/images/services') }}/{{ $service->image }}" alt="Post" height="100px" width="100px">
+								</div>
+							</div>
+						@endif
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Image <span style='color:red'>*</span></label>
+							<div class="col-sm-9">
+								<input type="file" autocomplete="off" class="form-control" name="image">
+								<span style="color: red">{{ $errors->first('image') }}</span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -44,7 +59,7 @@
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form1">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form1">Save</button>
 							</div>
 						</div>
 					</div>

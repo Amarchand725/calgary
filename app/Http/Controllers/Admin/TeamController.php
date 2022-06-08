@@ -65,7 +65,7 @@ class TeamController extends Controller
         $validator = $request->validate([
             'first_name' => 'required|max:255',
             'designation' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'max:255',
             'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
         ]);
 
@@ -128,7 +128,7 @@ class TeamController extends Controller
         $validator = $request->validate([
             'first_name' => 'required|max:255',
             'designation' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'max:255',
         ]);
 
         $update = Team::where('slug', $slug)->first();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use App\Models\Service;
 use Auth;
 use File;
 
@@ -34,41 +35,38 @@ class SliderController extends Controller
             return (string) view('admin.slider.search', compact('sliders'));
         }
         $page_title = 'All Sliders';
-        $sliders = Slider::orderby('id', 'desc')->where('status', 1)->paginate(10);
+        $sliders = Slider::orderby('id', 'desc')->paginate(10);
         return View('admin.slider.index', compact("sliders", "page_title"));
     }
 
     public function create()
     {
         $page_title = 'Add Slider';
-        return View('admin.slider.create', compact('page_title'));
+        $services = Service::orderby('id', 'desc')->where('status', 1)->get();
+        return View('admin.slider.create', compact('page_title', 'services'));
     }
 
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'left_sec_image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
+            'title' => 'required|max:255', 
+            'description' => 'required|max:500', 
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
         ]);
 
         $slider = new Slider();
 
-        if (isset($request->left_sec_image)) {
-            $photo = date('d-m-Y-His').'.'.$request->file('left_sec_image')->getClientOriginalExtension();
-            $request->left_sec_image->move(public_path('/admin/assets/images/slider'), $photo);
+        if (isset($request->image)) {
+            $image = date('d-m-Y-His').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->image->move(public_path('/admin/images/slider'), $image);
 
-            $slider->left_sec_image = $photo;
+            $slider->image = $image;
         }
 
         $slider->created_by = Auth::user()->id;
-        $slider->left_sec_title = $request->left_sec_title;
-        $slider->left_sec_sub_description = $request->left_sec_sub_description;
-        $slider->left_sec_description = $request->left_sec_description;
-        $slider->right_sect_title = $request->right_sect_title;
-        $slider->right_sec_description = $request->right_sec_description;
-        $slider->right_sec_left_btn_lbl = $request->right_sec_left_btn_lbl;
-        $slider->right_sec_right_btn_lbl = $request->right_sec_right_btn_lbl;
-        $slider->right_sec_video_link = $request->right_sec_video_linkl;
-        $slider->status = 1;
+        $slider->service_id = $request->service_id;
+        $slider->title = $request->title;
+        $slider->description = $request->description;
         $slider->save();
 
         return redirect()->route('slider.index')->with('message', 'Slider added successfully!');
@@ -77,30 +75,32 @@ class SliderController extends Controller
     public function edit($id)
     {
         $page_title = 'Edit Slider';
+        $services = Service::orderby('id', 'desc')->where('status', 1)->get();
         $slider = Slider::find($id);
-        return View('admin.slider.edit', compact('slider','page_title'));
+        return View('admin.slider.edit', compact('slider','page_title', 'services'));
     }
 
     public function update(Request $request, $id)
     {
+        $validator = $request->validate([
+            'title' => 'required|max:255', 
+            'description' => 'required|max:500', 
+        ]);
+
         $slider = Slider::find($id);
 
-        if (isset($request->left_sec_image)) {
-            $photo = date('d-m-Y-His').'.'.$request->file('left_sec_image')->getClientOriginalExtension();
-            $request->left_sec_image->move(public_path('/admin/assets/images/slider'), $photo);
+        if (isset($request->image)) {
+            $image = date('d-m-Y-His').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->image->move(public_path('/admin/images/slider'), $image);
 
-            $slider->left_sec_image = $photo;
+            $slider->image = $image;
         }
 
-        $slider->left_sec_title = $request->left_sec_title;
-        $slider->left_sec_sub_description = $request->left_sec_sub_description;
-        $slider->left_sec_description = $request->left_sec_description;
-        $slider->right_sect_title = $request->right_sect_title;
-        $slider->right_sec_description = $request->right_sec_description;
-        $slider->right_sec_left_btn_lbl = $request->right_sec_left_btn_lbl;
-        $slider->right_sec_right_btn_lbl = $request->right_sec_right_btn_lbl;
-        $slider->right_sec_video_link = $request->right_sec_video_link;
-        $slider->status = $request->status;;
+        $slider->created_by = Auth::user()->id;
+        $slider->service_id = $request->service_id;
+        $slider->title = $request->title;
+        $slider->description = $request->description;
+        $slider->status = $request->status;
         $slider->update();
 
         return redirect()->route('slider.index')->with('message', 'Slider Updated Successfully !');

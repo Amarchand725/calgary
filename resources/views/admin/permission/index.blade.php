@@ -50,7 +50,7 @@
                                             <a href="{{ route('permission.edit', $permission->parent) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
                                         @endcan
                                         @can('permission-delete')
-                                            <button class="btn btn-danger btn-xs delete" data-slug="{{ $permission->parent }}" data-del-url="{{ url('permission', $permission->parent) }}"><i class="fa fa-trash"></i> Delete</button>
+                                            <button class="btn btn-danger btn-xs delete" data-slug="{{ $permission->parent }}" data-del-url="{{ route('permission.destroy', $permission->parent) }}"><i class="fa fa-trash"></i> Delete</button>
                                         @endcan
                                     </td>
                                 </tr>

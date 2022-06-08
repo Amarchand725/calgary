@@ -41,7 +41,8 @@
 						<thead>
 							<tr>
 								<th>SL</th>
-								<th>Name</th>
+								<th>Image</th>
+								<th>Title</th>
 								<th>Description</th>
 								<th>Created by</th>
 								<th>Status</th>
@@ -52,6 +53,13 @@
 							@foreach($services as $key=>$service)
 								<tr id="id-{{ $service->slug }}">
 									<td>{{  $services->firstItem()+$key }}.</td>
+									<td>
+										@if($service->image)
+											<img class="rounded-circle" src="{{ asset('public/admin/images/services/'.$service->image) }}" alt="" style="width:60px; height:50px">
+										@else
+											<img src="{{ asset('public/admin/images/services/no-photo1.jpg') }}" style="width:60px;">
+										@endif
+									</td>
 									<td>{!! \Illuminate\Support\Str::limit($service->name,40) !!}</td>
 									<td>{!! \Illuminate\Support\Str::limit($service->description,60) !!}</td>
 									<td>{!! isset($service->hasCreatedBy)?$service->hasCreatedBy->name:'N/A' !!}</td>

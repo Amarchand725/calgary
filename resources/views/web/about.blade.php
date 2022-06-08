@@ -1,5 +1,5 @@
 @extends('layouts.web.app')
-@section('title', 'title')
+@section('title', $page_title)
 
 @push('css')
 @endpush
@@ -27,23 +27,21 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <div class="about-img">
-                        <img src="img/img-about-company-desc.jpg" alt="Image">
-                    </div>
+                    @if($home_page_data['about_side_image'])
+                        <div class="about-img">
+                            <img src="{{ asset('public/admin/assets/images/page') }}/{{ $home_page_data['about_side_image'] }}" alt="logo" class="img-fluid">
+                        </div>
+                    @endif
                 </div>
                 <div class="col-lg-6">
                     <div class="section-header text-left">
                         <p>About Us</p>
-                        <h2>
-                            Delivering Professional Auto Repairs Since 1999</h2>
+                        <h2>{!! isset($home_page_data['about_heading'])?$home_page_data['about_heading']:'' !!}</h2>
                     </div>
                     <div class="about-content">
-                        <p>
-                            Lorem ipsum dolor sit amet elit. In vitae turpis. Donec in hendre dui, vel blandit massa. Ut
-                            vestibu suscipi cursus. Cras quis porta nulla, ut placerat risus. Aliquam nec magna eget
-                            velit luctus dictum
-                        </p>
-                        <ul>
+                        <p>{!! isset($home_page_data['about_content'])?$home_page_data['about_content']:'' !!}</p>
+
+                        {{-- <ul>
                             <li>
                                 <i class="far fa-check-circle"></i>Auto Repair
                             </li>
@@ -65,7 +63,7 @@
                             <li>
                                 <i class="far fa-check-circle"></i>Windshied Repairs & Auto Body Repair Service
                             </li>
-                        </ul>
+                        </ul> --}}
                         <a class="btn btn-custom" href="">Learn More</a>
                     </div>
                 </div>

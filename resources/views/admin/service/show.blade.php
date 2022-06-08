@@ -17,7 +17,17 @@
 				<div class="box-body">
 					<table class="table bordered">
 						<tr>
-							<th>Name</th>
+							<th>Image</th>
+							<td>
+								@if($service->image)
+									<img src="{{ asset('public/admin/images/services') }}/{{ $service->image }}" alt="Slider Image" height="400px" width="500px">
+								@else 
+									<img src="{{ asset('public/admin/images/services/no-photo1.jpg') }}" alt="Slider Image" height="400px" width="500px">
+								@endif
+							</td>
+						</tr>
+						<tr>
+							<th>Title</th>
 							<td><span class="badge badge-success">{{ $service->name }}</span></td>
 						</tr>
 						<tr>

@@ -25,7 +25,7 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            $query = Permission::orderby('id', 'desc')->where('id', '>', 0);
+            $query = Permission::orderby('id', 'desc')->groupby('parent')->where('id', '>', 0);
             if($request['search'] != ""){
                 $query->where('name', 'like', '%'. $request['search'] .'%');
             }

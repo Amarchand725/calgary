@@ -40,9 +40,10 @@
 							<tr>
 								<th>SL</th>
 								<th>Image</th>
-								<th>Created by</th>
+								<th>Service</th>
 								<th>Title</th>
 								<th>Description</th>
+								<th>Created by</th>
 								<th>Status</th>
 								<th width="140">Action</th>
 							</tr>
@@ -52,15 +53,16 @@
 								<tr id="id-{{ $slider->id }}">
 									<td>{{  $sliders->firstItem()+$key }}.</td>
 									<td style="width:150px;">
-										@if($slider->left_sec_image)
-											<img src="{{ asset('public/admin/assets/images/slider/'.$slider->left_sec_image) }}" style="width:60px;">
+										@if($slider->image)
+											<img src="{{ asset('public/admin/images/slider/'.$slider->image) }}" style="width:60px;">
 										@else
-											<img src="{{ asset('public/admin/assets/images/slider/no-photo1.jpg') }}" style="width:60px;">
+											<img src="{{ asset('public/admin/images/slider/no-photo1.jpg') }}" style="width:60px;">
 										@endif
 									</td>
+									<td>{!! $slider->hasService->name !!}</td>
+									<td>{!! \Illuminate\Support\Str::limit($slider->title,40) !!}</td>
+									<td>{!! \Illuminate\Support\Str::limit($slider->description,60) !!}</td>
 									<td>{{$slider->hasCreatedBy->name}}</td>
-									<td>{!! \Illuminate\Support\Str::limit($slider->left_sec_title,40) !!}</td>
-									<td>{!! \Illuminate\Support\Str::limit($slider->left_sec_sub_description,60) !!}</td>
 									<td>
 										@if($slider->status)
 											<span class="badge badge-success">Active</span>

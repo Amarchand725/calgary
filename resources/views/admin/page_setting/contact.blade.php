@@ -49,9 +49,23 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Website </label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" name="contact_website" value="{{ isset($page_data['contact_website'])?$page_data['contact_website']:'' }}" placeholder="Enter website url">
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Contact Map (iframe Code) </label>
 							<div class="col-sm-9">
 								<textarea class="form-control" name="contact_map" style="height:120px;" placeholder="Enter map iframe code">{{ isset($page_data['contact_map'])?$page_data['contact_map']:'' }}</textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Contact Map</label>
+							<div class="col-sm-9">
+								<div class="col-md-12">
+									<iframe src="{!! $home_page_data['contact_map'] !!}" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+								</div>
 							</div>
 						</div>
 						

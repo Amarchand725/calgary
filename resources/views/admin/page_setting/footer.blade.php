@@ -25,18 +25,6 @@
 				<div class="box box-info">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Title </label>
-							<div class="col-sm-9">
-								<input type="text" name="footer_title" class="form-control" value="{{ isset($page_data['footer_title'])?$page_data['footer_title']:'' }}" placeholder="Enter title">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Sub Title</label>
-							<div class="col-sm-9">
-								<textarea name="footer_sub_title" id="" class="form-control" placeholder="Enter description">{{ isset($page_data['footer_sub_title'])?$page_data['footer_sub_title']:'' }}</textarea>
-							</div>
-						</div>
-						<div class="form-group">
 							<label for="" class="col-sm-2 control-label">Email </label>
 							<div class="col-sm-9">
 								<input type="email" name="footer_email" class="form-control" value="{{ isset($page_data['footer_email'])?$page_data['footer_email']:'' }}" placeholder="Enter email address">
@@ -64,6 +52,12 @@
 							<label for="" class="col-sm-2 control-label">Facebook Link </label>
 							<div class="col-sm-9">
 								<input type="text" name="footer_facebook" class="form-control" value="{{ isset($page_data['footer_facebook'])?$page_data['footer_facebook']:'' }}" placeholder="Enter social link">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 control-label">Youtube Link </label>
+							<div class="col-sm-9">
+								<input type="text" name="footer_youtube" class="form-control" value="{{ isset($page_data['footer_youtube'])?$page_data['footer_youtube']:'' }}" placeholder="Enter youtube link">
 							</div>
 						</div>
 						<div class="form-group">
@@ -96,24 +90,11 @@
 								<textarea name="footer_description" id="" class="form-control texteditor" placeholder="Enter description">{{ isset($page_data['footer_description'])?$page_data['footer_description']:'' }}</textarea>
 							</div>
 						</div>
-						@if(isset($page_data['footer_app_image']))
-							<div class="form-group">
-								<label for="" class="col-sm-2 control-label">Existing Image</label>
-								<div class="col-sm-9" style="padding-top:6px;">
-									<img src="{{ asset('/public/admin/assets/images/page/'.$page_data['footer_app_image']) }}" class="existing-photo" style="height:50px;">
-								</div>
-							</div>
-						@endif
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">Google Play Image </label>
-							<div class="col-sm-9">
-								<input type="file" name="footer_app_image" class="form-control">
-							</div>
-						</div>
+						
 						<div class="form-group">
 							<label for="" class="col-sm-2 control-label"></label>
 							<div class="col-sm-6">
-								<button type="submit" class="btn btn-success pull-left" name="form_blog">Submit</button>
+								<button type="submit" class="btn btn-success pull-left" name="form_blog">Save</button>
 							</div>
 						</div>
 					</div>

@@ -9,7 +9,8 @@
     <meta content="Free Website Template" name="description" />
 
     <!-- Favicon -->
-    <link href="{{ asset('public/web/img/fav.png') }}" rel="icon" />
+    <link href="{{ asset('public/admin/assets/images/page') }}/{{ $home_page_data['header_favicon'] }}" rel="icon" />
+    <link href="{{ asset('public/web/assets/img/hero-img.png') }}" rel="icon">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap"
@@ -18,7 +19,7 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('public/web/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" />
-    <link rel="stylesheet" href="{{asset('public/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('public/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/web/lib/flaticon/font/flaticon.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/web/lib/animate/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/web/lib/owlcarousel/assets/owl.carousel.min.css') }}"/>
