@@ -12,6 +12,19 @@
                     <i class="fa fa-cog"></i> <span>Settings</span>
                 </a>
             </li>
+            <li class="treeview">
+                @php
+                    $mail_setting = App\Models\MailSetting::orderby('id', 'desc')->first();
+                @endphp
+                @if($mail_setting)
+                    <a class="nav-link {{ request()->is('mail_setting.edit') ? 'active' : '' }}" href="{{ route('mail_setting.edit', $mail_setting->id) }}">
+                @else
+                    <a class="nav-link {{ request()->is('mail_setting.create') ? 'active' : '' }}" href="{{ route('mail_setting.create') }}">
+                @endif
+                    <i class="fa fa-cog"></i>
+                    <span class="nav-link-text">{{ __('Mail Settings') }}</span>
+                </a>
+            </li>
             @endcan
             @can('role-list')
             <li class="treeview">
@@ -31,6 +44,13 @@
             <li class="treeview">
                 <a href="{{ route('permission.index') }}" class="{{ request()->is('permission') || request()->is('permission/create') || request()->is('permission/*/edit') ? 'active' : '' }}">
                     <i class="fa fa-lock"></i> <span>Permissions</span>
+                </a>
+            </li>
+            @endcan
+            @can('booking-list')
+            <li class="treeview">
+                <a href="{{ route('booking.index') }}" class="{{ request()->is('booking') || request()->is('booking/*')? 'active' : '' }}">
+                    <i class="fa fa-gift"></i> <span>Bookings</span>
                 </a>
             </li>
             @endcan

@@ -82,5 +82,8 @@ Route::resource('team', 'Admin\TeamController');
 //Coupons
 Route::resource('coupon', 'Admin\CouponController');
 
+//mail settings
+Route::resource('mail_setting', 'Admin\MailSettingController');
+
 //service bookings
 Route::resource('booking', 'BookingController');
